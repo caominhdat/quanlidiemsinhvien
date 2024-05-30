@@ -8,6 +8,7 @@ import com.cmd.pojo.Course;
 import com.cmd.repositories.CourseRepository;
 import com.cmd.services.CourseService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,13 @@ public class CourseServiceImpl implements CourseService{
     private CourseRepository courseRepo;
 
     @Override
-    public List<Course> getCourse() {
-        return this.courseRepo.getCourse();
+    public List<Course> getCourse(Map<String, String> params) {
+        return this.courseRepo.getCourse(params);
     }
+
+    @Override
+    public void addOrUpdate(Course c) {
+        this.courseRepo.addOrUpdate(c);
+    }
+    
 }

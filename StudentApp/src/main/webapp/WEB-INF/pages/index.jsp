@@ -23,25 +23,39 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/"/>">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Đăng nhập</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Đăng kí</a>
                         </li>
                     </ul>
+                    <form action="<c:url value="/" />" class="d-flex">
+                            <input class="form-control me-2" name="kw" type="text" placeholder="Bạn muốn tìm?">
+                            <button class="btn btn-primary" type="submit">Tìm</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <ul>
-            <c:forEach items="${course}" var="c">
-                <li>${c.courseName}</li>
-                </c:forEach>
-        </ul>
-    </body>
-</html>
+            <section>
+                <div class="row" class="container">
+                    <c:forEach items="${course}" var="c">
+                        <div class="col-md-3 col-12" style="padding: 1rem;">
+                            <div class="card">
+                                <img class="card-img-top" src="${c.image}" alt="${c.courseName}">
+                                <div class="card-body">
+                                    <h4 class="card-title">${c.courseName} (${c.courseCode})</h4>
+                                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+            </section>
+
+        </body>
+    </html>
