@@ -5,12 +5,12 @@
     <class>com.cmd.pojo.StudentCourse</class>
     <class>com.cmd.pojo.Teacher</class>
     <class>com.cmd.pojo.ForumThread</class>
-    <class>com.cmd.pojo.Users</class>
     <class>com.cmd.pojo.Course</class>
     <class>com.cmd.pojo.TeacherCourse</class>
     <class>com.cmd.pojo.ForumPost</class>
     <class>com.cmd.pojo.Grade</class>
     <class>com.cmd.pojo.Student</class>
+    <class>com.cmd.pojo.User</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/qldiemsinhvien?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

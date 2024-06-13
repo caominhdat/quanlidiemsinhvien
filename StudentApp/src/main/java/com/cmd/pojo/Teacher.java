@@ -72,7 +72,7 @@ public class Teacher implements Serializable {
     private Date updatedAt;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @OneToOne
-    private Users userId;
+    private User userId;
     @OneToMany(mappedBy = "teacherId")
     private Set<TeacherCourse> teacherCourseSet;
 
@@ -138,11 +138,11 @@ public class Teacher implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Users getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Users userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 

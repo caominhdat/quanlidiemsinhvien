@@ -58,7 +58,7 @@ public class ForumPost implements Serializable {
     private ForumThread threadId;
     @JoinColumn(name = "created_by", referencedColumnName = "id")
     @ManyToOne
-    private Users createdBy;
+    private User createdBy;
 
     public ForumPost() {
     }
@@ -107,11 +107,11 @@ public class ForumPost implements Serializable {
         this.threadId = threadId;
     }
 
-    public Users getCreatedBy() {
+    public User getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Users createdBy) {
+    public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
     }
 

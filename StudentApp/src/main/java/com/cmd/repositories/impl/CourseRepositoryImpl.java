@@ -78,7 +78,23 @@ public class CourseRepositoryImpl implements CourseRepository {
     @Override
     public void addOrUpdate(Course c) {
         Session s = this.factoryBean.getObject().getCurrentSession();
-        s.saveOrUpdate(c);
+        if (c.getId() != null)
+            s.update(c);
+        else
+            s.save(c);
+    }
+
+    @Override
+    public Course getCourseById(int id) {
+        Session s = this.factoryBean.getObject().getCurrentSession();
+        return s.get(Course.class, id);
+    }
+
+    @Override
+    public void deleteCourse(int id) {
+        Session s = this.factoryBean.getObject().getCurrentSession();
+        Course c = this.getCourseById(id);
+        s.delete(c);
     }
 
 }

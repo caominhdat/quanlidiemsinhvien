@@ -4,6 +4,7 @@
  */
 package com.cmd.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -19,10 +20,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -48,11 +51,11 @@ public class Course implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "{course.courseCode.nullErr}")
     @Size(min = 1, max = 50)
     @Column(name = "course_code")
     private String courseCode;
-    @Size(max = 100)
+    @Size(max = 100 , message = "{course.courseName.maxLenErr}")
     @Column(name = "course_name")
     private String courseName;
     @Column(name = "created_at")
@@ -65,9 +68,13 @@ public class Course implements Serializable {
     @Column(name = "image")
     private String image;
     @OneToMany(mappedBy = "courseId")
+    @JsonIgnore
     private Set<TeacherCourse> teacherCourseSet;
     @OneToMany(mappedBy = "courseId")
+    @JsonIgnore
     private Set<StudentCourse> studentCourseSet;
+    @Transient
+    private MultipartFile file;
 
     public Course() {
     }
@@ -170,6 +177,20 @@ public class Course implements Serializable {
     @Override
     public String toString() {
         return "com.cmd.pojo.Course[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
     
 }

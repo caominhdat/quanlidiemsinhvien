@@ -15,4 +15,6 @@ import java.util.Map;
 public interface CourseService {
     List<Course> getCourse(Map<String, String> params);
     void addOrUpdate(Course c);
+    Course getCourseById(int id);
+    public void deleteCourse(int id);
 }

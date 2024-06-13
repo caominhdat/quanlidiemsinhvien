@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <h1 class="text-center text-info mt-1">Danh mục khóa học</h1>
-<a href="#" class="btn btn-success mb-1">Thêm khóa học</a>
+<a href="<c:url value="/courses" />" class="btn btn-success mb-1">Thêm khóa học</a>
 <table class="table table-striped">
     <tr>
         <th></th>
@@ -27,10 +27,12 @@
             <td>${c.createdAt}</td>
 
             <td>
-                <button class="btn btn-danger">Xóa</button>
-                <a href="#" class="btn btn-success">Cập nhật</a>
+                <c:url value="/api/course/${c.id}" var="url" />
+                <button onclick="deleteCourse('${url}',${c.id})" class="btn btn-danger">Xóa</button>
+                <a href="${url}" class="btn btn-success">Cập nhật</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
+<script src="<c:url value="/js/script.js" />"></script>
