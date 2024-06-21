@@ -51,11 +51,11 @@ public class Course implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull(message = "{course.courseCode.nullErr}")
+    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "course_code")
     private String courseCode;
-    @Size(max = 100 , message = "{course.courseName.maxLenErr}")
+    @Size(max = 100)
     @Column(name = "course_name")
     private String courseName;
     @Column(name = "created_at")
@@ -178,13 +178,13 @@ public class Course implements Serializable {
     public String toString() {
         return "com.cmd.pojo.Course[ id=" + id + " ]";
     }
-
+    
     /**
      * @return the file
      */
     public MultipartFile getFile() {
         return file;
-    }
+}
 
     /**
      * @param file the file to set

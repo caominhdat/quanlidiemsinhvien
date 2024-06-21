@@ -54,6 +54,7 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 40)
     @Column(name = "username")
     private String username;
@@ -70,7 +71,7 @@ public class User implements Serializable {
     private String email;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 7)
+    @Size(min = 1, max = 10)
     @Column(name = "role")
     private String role;
     @Size(max = 255)
@@ -92,7 +93,7 @@ public class User implements Serializable {
     private Set<ForumThread> forumThreadSet;
     @OneToOne(mappedBy = "userId")
     private Student student;
-    
+
     @Transient
     private MultipartFile file;
 
@@ -233,13 +234,13 @@ public class User implements Serializable {
     public String toString() {
         return "com.cmd.pojo.User[ id=" + id + " ]";
     }
-
+    
     /**
      * @return the file
      */
     public MultipartFile getFile() {
         return file;
-    }
+}
 
     /**
      * @param file the file to set
