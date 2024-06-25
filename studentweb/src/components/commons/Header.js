@@ -28,8 +28,13 @@ const Header = () => {
                     <Nav className="me-auto">
                         {/* <Nav.Link href="#home">Trang chủ</Nav.Link> */}
                         <Link className="nav-link" to="/">Trang chủ</Link>
-                        <Nav.Link href="/login" className="text-danger">Đăng nhập</Nav.Link>   
-                        <Nav.Link href="/register" className="text-info">Đăng ký</Nav.Link>
+                        {user !== null ? <>
+                            <Nav.Link href="/" className="text-danger">Xin chào!</Nav.Link> 
+                        </>:<>
+                            <Nav.Link href="/login" className="text-danger">Đăng nhập</Nav.Link>   
+                            <Nav.Link href="/register" className="text-info">Đăng ký</Nav.Link>
+                        </>}
+                        
                     </Nav>
                     </Navbar.Collapse>
                 

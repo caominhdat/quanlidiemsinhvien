@@ -8,11 +8,11 @@ const Login = () => {
     const fields = [{
         "label": "Username",
         "type": "text",
-        "field": "userName"
+        "field": "username"
     }, {
         "label": "Password",
         "type": "password",
-        "field": "passWord"
+        "field": "password"
     }];
 
     const [user, setUser] = useState({});

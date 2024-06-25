@@ -6,19 +6,23 @@ import Header from "./components/commons/Header";
 import Login from "./components/course/Login";
 import Register from "./components/course/Register";
 import { MyDispatchContext, MyUserContext } from "./configs/contexts";
+import { useReducer } from "react";
+import { MyUserReducer } from "./configs/Reducers";
 
 const App = () => {
+  const [user, userDispatch] = useReducer(MyUserReducer, null);
+
   return (
     <BrowserRouter>
-    <MyUserContext.Provider>
-      <MyDispatchContext.Provider>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/course/:courseId" element={<CourseDetails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+    <MyUserContext.Provider value={user}>
+      <MyDispatchContext.Provider value={userDispatch}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/course/:courseId" element={<CourseDetails />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
       </MyDispatchContext.Provider>
     </MyUserContext.Provider>
     </BrowserRouter>
