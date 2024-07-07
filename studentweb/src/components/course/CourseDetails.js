@@ -32,6 +32,7 @@ const CourseDetails = () => {
                     <Col md={7} xs={6}>
                         <h2>Tên khóa học: {course.courseName}</h2>
                         <h4 className="text-danger">Mã khóa học: {course.courseCode}</h4>
+
                     </Col>
                 </Row>
             </>}

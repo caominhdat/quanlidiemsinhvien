@@ -27,6 +27,7 @@ public class ApiGradeController {
     @Autowired
     private GradeService gradeService;
     
+    
     @PostMapping(path = "/grade/", consumes = {
         MediaType.APPLICATION_FORM_URLENCODED_VALUE,
     })

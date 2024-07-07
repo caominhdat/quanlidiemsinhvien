@@ -8,6 +8,7 @@ import Register from "./components/course/Register";
 import { MyDispatchContext, MyUserContext } from "./configs/contexts";
 import { useReducer } from "react";
 import { MyUserReducer } from "./configs/Reducers";
+import InputGrade from "./components/course/InputGrade";
 
 const App = () => {
   const [user, userDispatch] = useReducer(MyUserReducer, null);
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/course/:courseId" element={<CourseDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/input" element={<InputGrade />} />
         </Routes>
       </MyDispatchContext.Provider>
     </MyUserContext.Provider>

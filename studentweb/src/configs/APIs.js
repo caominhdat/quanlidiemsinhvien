@@ -6,7 +6,8 @@ export const endpoints = {
     'course': '/api/course/',
     'details': (courseId) => `/api/course/${courseId}/`,
     'register': '/api/user/',
-    'login': '/api/login/'
+    'login': '/api/login/',
+    'input': '/api/grade/',
 }
 
 export default axios.create({

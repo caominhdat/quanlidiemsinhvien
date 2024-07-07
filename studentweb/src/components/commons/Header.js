@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
-import { Button, Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap";
+import { Button, ButtonGroup, Col, Container, Dropdown, Form, Nav, Navbar, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { MyUserContext } from "../../configs/contexts";
+import { MyDispatchContext, MyUserContext } from "../../configs/contexts";
 
 const Header = () => {
     const [q, setQ] = useState("");
     const nav = useNavigate();
     const user = useContext(MyUserContext);
+    const dispatch = useContext(MyDispatchContext);
 
     const search = (e) => {
         e.preventDafault();
@@ -25,17 +26,29 @@ const Header = () => {
                     <Navbar.Brand href="#home">StudentWeb</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        {/* <Nav.Link href="#home">Trang chủ</Nav.Link> */}
-                        <Link className="nav-link" to="/">Trang chủ</Link>
-                        {user !== null ? <>
-                            <Nav.Link href="/" className="text-danger">Xin chào!</Nav.Link> 
-                        </>:<>
-                            <Nav.Link href="/login" className="text-danger">Đăng nhập</Nav.Link>   
-                            <Nav.Link href="/register" className="text-info">Đăng ký</Nav.Link>
-                        </>}
-                        
-                    </Nav>
+                        <Nav className="me-auto">
+                            {/* <Nav.Link href="#home">Trang chủ</Nav.Link> */}
+                            <Link className="nav-link" to="/">Trang chủ</Link>
+                            {user !== null ? <>
+                                <Nav.Link href="#/" className="text-info">Xin chào</Nav.Link> 
+                                <Nav.Link onClick={() => dispatch({"type": "logout"})} className="text-danger">Đăng xuất</Nav.Link>
+                                <Dropdown as={ButtonGroup}>
+                                <Button variant="success">Tính năng</Button>
+
+                                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/abc">Xem điểm</Dropdown.Item>
+                                    <Dropdown.Item href="/input">Nhập điểm</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            </>:<>
+                                <Nav.Link href="/login" className="text-danger">Đăng nhập</Nav.Link>   
+                                <Nav.Link href="/register" className="text-info">Đăng ký</Nav.Link>
+                            </>}
+                            
+                            
+                        </Nav>
                     </Navbar.Collapse>
                 
                     <Form inline onSubmit={submit}>
